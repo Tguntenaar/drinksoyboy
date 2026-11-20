@@ -1,18 +1,27 @@
-import React from 'react';
-import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { Gallery } from './components/Gallery/Gallery';
+import { Drink } from './components/Drink';
+import { Flavors } from './components/Flavors';
+import { Gallery } from './components/Gallery';
+import { Waitlist } from './components/Waitlist';
+import { Footer } from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#f7d2d4]">
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
+    <>
+      <a
+        href="#main"
+        className="sr-only z-50 rounded-full bg-berry px-5 py-3 text-milk focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+      >
+        Skip to content
+      </a>
+      <Hero />
+      <main id="main">
+        <Drink />
+        <Flavors />
         <Gallery />
+        <Waitlist />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }

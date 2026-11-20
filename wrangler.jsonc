@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Static-assets Worker: no script, Cloudflare serves ./dist directly.
+  "name": "drinksoyboy",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  // Custom domain (DNS is on Cloudflare). Uncomment when ready to go live;
+  // wrangler deploy will then attach drinksoyboy.com to this Worker.
+  // "routes": [
+  //   { "pattern": "drinksoyboy.com", "custom_domain": true },
+  //   { "pattern": "www.drinksoyboy.com", "custom_domain": true }
+  // ],
+  "workers_dev": true
+}

@@ -1,15 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    font-family: 'Inter', sans-serif;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
-  
-  .font-serif {
-    font-family: 'Cormorant Garamond', serif;
+
+  body {
+    @apply bg-milk font-sans text-berry antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+
+  :focus-visible {
+    outline: 3px solid theme('colors.berry');
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: theme('colors.milk');
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* The bottle shoulder: a full arch on top, small radius at the base.
+     Every photo on the page uses it, so the bottle silhouette runs through the layout. */
+  .arch {
+    border-radius: 999px 999px 1.25rem 1.25rem;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors;
+    min-height: 3rem;
+  }
+
+  /* ---------- Hero wordmark + bottle ---------- */
+
+  .stage {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .wordmark {
+    @apply font-display text-label;
+    display: flex;
+    flex-direction: column;
+    font-size: 41vw;
+    line-height: 0.78;
+    letter-spacing: -0.02em;
+    padding-block: 0.06em 0.1em;
+  }
+
+  .wordmark .word {
+    display: block;
+  }
+
+  .stage .bottle {
+    position: absolute;
+    z-index: 1;
+    right: 2vw;
+    top: 50%;
+    height: 118%;
+    width: auto;
+    transform: translateY(-50%) rotate(9deg);
+    filter: drop-shadow(0 1.5rem 1.5rem rgb(27 33 82 / 0.22));
+  }
+
+  @media (min-width: 768px) {
+    .wordmark {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.62em;
+      font-size: clamp(8rem, 21.5vw, 21.5rem);
+    }
+
+    .stage .bottle {
+      right: auto;
+      left: 50%;
+      top: 47%;
+      height: 185%;
+      transform: translate(-50%, -50%) rotate(-7deg);
+    }
+  }
+
+  /* The one orchestrated moment: the bottle drops in and shoves the words apart. */
+  @media (prefers-reduced-motion: no-preference) {
+    .stage .bottle {
+      animation: bottle-drop-mobile 900ms cubic-bezier(0.2, 0.9, 0.3, 1.25) 150ms both;
+    }
+
+    @media (min-width: 768px) {
+      .stage .bottle {
+        animation-name: bottle-drop;
+      }
+
+      .wordmark .word-soy {
+        animation: shove-left 700ms cubic-bezier(0.2, 0.9, 0.3, 1.15) 450ms both;
+      }
+
+      .wordmark .word-boy {
+        animation: shove-right 700ms cubic-bezier(0.2, 0.9, 0.3, 1.15) 450ms both;
+      }
+    }
+  }
+}
+
+@keyframes bottle-drop {
+  from {
+    transform: translate(-50%, -160%) rotate(14deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-7deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bottle-drop-mobile {
+  from {
+    transform: translateY(-160%) rotate(-12deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50%) rotate(9deg);
+    opacity: 1;
+  }
+}
+
+/* The words start touching ("soyboy"), half the gap each, then get pushed apart. */
+@keyframes shove-left {
+  from {
+    transform: translateX(0.31em);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes shove-right {
+  from {
+    transform: translateX(-0.31em);
+  }
+  to {
+    transform: translateX(0);
   }
 }

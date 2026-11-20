@@ -1,46 +1,84 @@
-import React from "react";
-import { ShoppingBag, Award } from "lucide-react";
-// Original image src="https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=800&q=80"
+const links = [
+  { href: '#drink', label: 'The drink' },
+  { href: '#flavors', label: 'Flavors' },
+  { href: '#gallery', label: 'Gallery' },
+];
 
 export function Hero() {
   return (
-    <section className="px-8 py-20">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 className="font-serif text-5xl md:text-6xl text-[#4a5759] leading-tight">
-            Elevate Your Daily Ritual
+    <header className="relative overflow-hidden bg-milk">
+      <nav
+        aria-label="Main"
+        className="relative z-10 mx-auto flex max-w-[1440px] items-center justify-between px-4 pt-5 sm:px-8 sm:pt-7"
+      >
+        <a href="/" className="font-display text-3xl leading-none text-berry">
+          soyboy
+        </a>
+        <ul className="flex items-center gap-1 sm:gap-2">
+          {links.map((link) => (
+            <li key={link.href} className="hidden md:block">
+              <a
+                href={link.href}
+                className="rounded-full px-4 py-2 font-medium underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="#waitlist" className="btn bg-berry text-milk hover:bg-magenta">
+              Join the waitlist
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div className="mx-auto max-w-[1440px] px-4 pb-14 pt-10 sm:px-8 md:pb-20 md:pt-20">
+        <div className="stage">
+          <h1 className="wordmark">
+            <span className="sr-only">Soyboy</span>
+            <span aria-hidden="true" className="word word-soy">
+              soy
+            </span>
+            <span aria-hidden="true" className="word word-boy">
+              boy
+            </span>
           </h1>
-          <p className="mt-6 text-lg text-[#4a5759]/80">
-            Discover our artisanal soy beverage, crafted for New York's
-            discerning palates. Made with organic, locally-sourced soybeans and
-            filtered spring water.
-          </p>
-          <div className="mt-8 flex space-x-4">
-            <button className="bg-[#4a5759] text-white px-8 py-3 rounded-full hover:bg-[#3a4749] transition flex items-center">
-              <ShoppingBag className="h-5 w-5 mr-2" />
-              Order Now
-            </button>
-            <button className="border-2 border-[#4a5759] text-[#4a5759] px-8 py-3 rounded-full hover:bg-[#4a5759] hover:text-white transition">
-              Learn More
-            </button>
-          </div>
-        </div>
-        <div className="relative">
           <img
-            src="https://storage.googleapis.com/soyboy-images/bottle-with-fruit-2.jpg"
-            alt="Premium Soy Drink"
-            className="rounded-2xl shadow-2xl"
+            className="bottle"
+            src="/images/soyboy-bottle.webp"
+            srcSet="/images/soyboy-bottle-1x.webp 228w, /images/soyboy-bottle.webp 456w"
+            sizes="(min-width: 768px) 15vw, 30vw"
+            width={456}
+            height={1392}
+            alt="A white Soyboy bottle with a pink cap and the word soyboy printed in magenta"
           />
-          <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-2xl shadow-lg">
-            <div className="flex items-center space-x-2">
-              <Award className="h-6 w-6 text-[#4a5759]" />
-              <span className="text-[#4a5759] font-medium">
-                2024 Taste Award Winner
-              </span>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:mt-24 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-6 lg:col-span-5">
+            <p className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+              Go on. Be a soyboy.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a href="#waitlist" className="btn bg-magenta text-white hover:bg-berry">
+                Join the waitlist
+              </a>
+              <a
+                href="#drink"
+                className="btn border-2 border-berry text-berry hover:bg-berry hover:text-milk"
+              >
+                What's in it
+              </a>
             </div>
           </div>
+          <p className="max-w-md text-lg md:col-span-5 md:col-start-8 lg:col-span-4 lg:col-start-9">
+            An artisanal soy drink made from organic soybeans and filtered spring water.
+            Creamy, a little nutty, and best straight from the fridge. The name is a joke.
+            The drink isn't.
+          </p>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
