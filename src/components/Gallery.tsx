@@ -22,14 +22,14 @@ export function Gallery() {
           />
           <Photo
             name="bottle-blush"
-            alt="A two-tone white and pink bottle with a copper cap on a stone ledge beside white flowers"
+            alt="A white Soyboy bottle with a pink cap and magenta soyboy lettering on a stone ledge beside white flowers"
             className="aspect-[4/3] w-full rounded-[1.25rem] md:col-span-5"
             sizes="(min-width: 768px) 42vw, 100vw"
             position="50% 40%"
           />
           <Photo
             name="bottle-stone"
-            alt="A matte pink bottle with a steel cap next to a small heap of soybean grits and a green plant"
+            alt="A white Soyboy bottle with a pink cap and magenta soyboy lettering next to soybean grits and a green plant"
             className="aspect-[4/3] w-full rounded-[1.25rem] md:col-span-5"
             sizes="(min-width: 768px) 42vw, 100vw"
             position="30% 50%"
