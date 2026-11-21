@@ -34,7 +34,7 @@ export function Drink() {
         <div className="md:col-span-5">
           <Photo
             name="bottle-leaf"
-            alt="A cream-colored bottle with a copper cap standing in a pile of ground soybeans, next to a pale sprig of leaves on a pink wall"
+            alt="A white Soyboy bottle with a pink cap and magenta soyboy lettering, standing in a pile of soybeans next to a pale sprig on a pink wall"
             className="arch aspect-[4/5] w-full md:sticky md:top-8"
             sizes="(min-width: 768px) 40vw, 100vw"
             position="50% 60%"
